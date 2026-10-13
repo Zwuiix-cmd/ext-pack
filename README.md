@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="https://raw.githubusercontent.com/Zwuiix-cmd/ext-pack/refs/heads/main/icon.png?token=GHSAT0AAAAAAELDNWXZVWNMRLJM5RW4FUI42WON5WA" alt="Logo ext-pack" width="150" />
+    <img src="https://raw.githubusercontent.com/Zwuiix-cmd/ext-pack/refs/heads/main/icon.png?token=GHSAT0AAAAAAELDNWXZPW4WZB2UDF4CYXHM2WORZEQ" alt="Logo ext-pack" width="150" />
     <br>
     ext-pack
 </h1>
