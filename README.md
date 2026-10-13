@@ -6,7 +6,7 @@
 
 <p align="center">
     <a><img src="https://img.shields.io/badge/php-^8.2.0-informational" alt="Version"></a>
-    <a href="https://github.com/Zwuiix-cmd/ext-pack/latest"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/Zwuiix-cmd/ext-pack?label=release&sort=semver"></a>
+    <a href="https://github.com/Zwuiix-cmd/ext-pack/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/Zwuiix-cmd/ext-pack?label=release&sort=semver"></a>
     <a href="https://discord.gg/KCm6rUFXbJ"><img src="https://img.shields.io/badge/Discord-Join-7289da?logo=discord&logoColor=white" alt="Discord"></a>
 </p>
 
