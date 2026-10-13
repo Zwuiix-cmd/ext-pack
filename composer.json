@@ -1,0 +1,39 @@
+{
+  "name": "zwuiix-cmd/ext-pack",
+  "autoload": {
+    "classmap": ["src"]
+  },
+  "authors": [
+    {
+      "name": "zwuiix",
+      "email": "71025924+Zwuiix-cmd@users.noreply.github.com"
+    }
+  ],
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.86",
+    "axolotl-pm/pocketmine-mp": "dev-stable",
+    "muqsit/simple-packet-handler": "dev-pm5"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/axolotl-pm/PocketMine-MP",
+      "no-api": true
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/Muqsit/SimplePacketHandler",
+      "no-api": true
+    }
+  ],
+  "scripts": {
+    "make": [
+      "@composer install --classmap-authoritative --ignore-platform-reqs",
+      "@php -dphar.readonly=0 build/compiler.php"
+    ],
+    "cs-fixer": [
+      "@composer install --classmap-authoritative --ignore-platform-reqs",
+      "./vendor/bin/php-cs-fixer fix -v"
+    ]
+  }
+}

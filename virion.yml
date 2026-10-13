@@ -1,0 +1,5 @@
+name: ext-pack
+antigen: zwuiix\extpack
+api: 5.0.0
+version: 1.0.0
+author: Zwuiix
