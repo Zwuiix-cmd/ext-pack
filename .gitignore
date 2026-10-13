@@ -1,0 +1,4 @@
+.idea/vcs.xml
+vendor/
+.php-cs-fixer.cache
+ext-pack.phar
