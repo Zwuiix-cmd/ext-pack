@@ -1,12 +1,12 @@
 <h1 align="center">
-    <img src="https://raw.githubusercontent.com/Zwuiix-cmd/ext-pack/refs/heads/main/icon.png?token=GHSAT0AAAAAAELDNWXZPW4WZB2UDF4CYXHM2WORZEQ" alt="Logo ext-pack" width="150" />
+    <img src="https://raw.githubusercontent.com/Zwuiix-cmd/ext-pack/refs/heads/main/icon.png" alt="Logo ext-pack" width="150" />
     <br>
     ext-pack
 </h1>
 
 <p align="center">
     <a><img src="https://img.shields.io/badge/php-^8.2.0-informational" alt="Version"></a>
-    <a href="https://github.com/Zwuiix-cmd/ext-pack/latest"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/Zwuiix-cmd/ext-pack?label=release&sort=semver"></a>
+    <a href="https://github.com/Zwuiix-cmd/ext-pack/releases"><img alt="GitHub release (latest SemVer)" src="https://img.shields.io/github/v/release/Zwuiix-cmd/ext-pack?label=release&sort=semver"></a>
     <a href="https://discord.gg/KCm6rUFXbJ"><img src="https://img.shields.io/badge/Discord-Join-7289da?logo=discord&logoColor=white" alt="Discord"></a>
 </p>
 
