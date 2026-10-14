@@ -80,10 +80,6 @@ class ExtPack
 	 */
 	public static function fromUrl(string $url, string $contentKey = "") : ?ResourcePack
 	{
-		if (!PackPacketHooker::isRegistered()) {
-			throw new \LogicException("PackPacketHooker must be registered before calling ExtPack::fromUrl(). Please call PackPacketHooker::register(\$plugin) in your plugin's onEnable() first.");
-		}
-
 		$server = Server::getInstance();
 		$manager = $server->getResourcePackManager();
 		$logger = $server->getLogger();
