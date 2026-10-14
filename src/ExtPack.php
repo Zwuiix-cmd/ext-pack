@@ -15,10 +15,8 @@
 
 namespace zwuiix\extpack;
 
-use pocketmine\resourcepacks\json\Manifest;
 use pocketmine\resourcepacks\ResourcePack;
 use pocketmine\resourcepacks\ResourcePackManager;
-use pocketmine\resourcepacks\ZippedResourcePack;
 use pocketmine\Server;
 use pocketmine\utils\Internet;
 use ReflectionClass;
@@ -27,12 +25,10 @@ use Throwable;
 use function array_merge;
 use function basename;
 use function file_put_contents;
-use function hash;
 use function is_dir;
 use function is_file;
 use function md5;
 use function parse_url;
-use function strlen;
 use function sys_get_temp_dir;
 use function unlink;
 use const DIRECTORY_SEPARATOR;
@@ -105,10 +101,6 @@ class ExtPack
 			return null;
 		}
 
-		$body = $result->getBody();
-		$size = strlen($body);
-		$sha256 = hash("sha256", $body, true);
-
 		$path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . md5($url) . ".zip";
 		if (file_put_contents($path, $result->getBody()) === false) {
 			$logger->error("ExtPack: Failed to save downloaded resource pack.");
@@ -117,28 +109,14 @@ class ExtPack
 
 		try {
 			$refClass = new ReflectionClass(ResourcePackManager::class);
-			$refMethod = new \ReflectionProperty(ZippedResourcePack::class, 'manifest');
 
 			/** @var ResourcePack $tmp */
-			$tmp = $refClass->getMethod("loadPackFromPath")->invoke($manager, $path);
-
-			/** @var Manifest $manifest */
-			$manifest = $refMethod->getValue($tmp);
-
-			unset($tmp);
-			@unlink($path);
+			$pack = $refClass->getMethod("loadPackFromPath")->invoke($manager, $path);
 		} catch (Throwable $e) {
 			$logger->error("ExtPack: Failed to parse resource pack from \"$url\" -> " . $e->getMessage());
 			@unlink($path);
 			return null;
 		}
-
-		$pack = new UrlResourcePack(
-			$url,
-			$manifest,
-			$sha256,
-			$size,
-		);
 
 		if ($contentKey !== "") {
 			$manager->setPackEncryptionKey($pack->getPackId(), $contentKey);
