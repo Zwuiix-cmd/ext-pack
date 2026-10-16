@@ -1,5 +1,5 @@
 {
-  "name": "zwuiix-cmd/ext-pack",
+  "name": "zwuiix-cmd/remote-pack",
   "autoload": {
     "classmap": ["src"]
   },

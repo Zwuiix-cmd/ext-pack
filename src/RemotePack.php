@@ -9,31 +9,29 @@
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * @author Zwuiix
- * @link https://github.com/Zwuiix-cmd/ext-pack
+ * @link https://github.com/Zwuiix-cmd/remote-pack
  *
  */
 
-namespace zwuiix\extpack;
+namespace zwuiix\remotepack;
 
+use pocketmine\promise\Promise;
+use pocketmine\promise\PromiseResolver;
 use pocketmine\resourcepacks\ResourcePack;
 use pocketmine\resourcepacks\ResourcePackManager;
 use pocketmine\Server;
-use pocketmine\utils\Internet;
 use ReflectionClass;
 use Symfony\Component\Filesystem\Path;
 use Throwable;
 use function array_merge;
 use function basename;
-use function file_put_contents;
+use function file_exists;
 use function is_dir;
 use function is_file;
-use function md5;
 use function parse_url;
-use function sys_get_temp_dir;
 use function unlink;
-use const DIRECTORY_SEPARATOR;
 
-class ExtPack
+class RemotePack
 {
 	/**
 	 * @param string $path
@@ -76,12 +74,11 @@ class ExtPack
 	/**
 	 * @param string $url
 	 * @param string $contentKey
-	 * @return ResourcePack|null
+	 * @return Promise
 	 */
-	public static function fromUrl(string $url, string $contentKey = "") : ?ResourcePack
+	public static function fromUrl(string $url, string $contentKey = "") : Promise
 	{
 		$server = Server::getInstance();
-		$manager = $server->getResourcePackManager();
 		$logger = $server->getLogger();
 
 		$parsedUrl = parse_url($url);
@@ -89,38 +86,46 @@ class ExtPack
 		$host = $parsedUrl['host'] ?? 'remote URL';
 
 		$logger->info("ExtPack: Fetching resource pack \"$filename\" from $host...");
-		$result = Internet::getURL($url);
 
-		if ($result === null || $result->getCode() !== 200) {
-			$code = $result !== null ? $result->getCode() : "Timeout/Error";
-			$logger->error("ExtPack: Failed to fetch resource pack from URL (HTTP Code: $code).");
-			return null;
-		}
+		$resolver = new PromiseResolver();
+		$server->getAsyncPool()->submitTask(new FetchPackAsyncTask($url, function (string $path, int $httpCode, ?string $errorMessage) use ($url, $contentKey, $resolver, $server, $logger) {
+			$manager = $server->getResourcePackManager();
 
-		$path = sys_get_temp_dir() . DIRECTORY_SEPARATOR . md5($url) . ".zip";
-		if (file_put_contents($path, $result->getBody()) === false) {
-			$logger->error("ExtPack: Failed to save downloaded resource pack.");
-			return null;
-		}
+			if ($errorMessage !== null) {
+				$logger->error("ExtPack: Failed to fetch resource pack from URL (HTTP Code: $errorMessage).");
+				$resolver->reject();
+				return;
+			}
 
-		try {
-			$refClass = new ReflectionClass(ResourcePackManager::class);
+			if (!file_exists($path)) {
+				$logger->error("ExtPack: Failed to save downloaded resource pack.");
+				$resolver->reject();
+				return;
+			}
 
-			/** @var ResourcePack $tmp */
-			$pack = $refClass->getMethod("loadPackFromPath")->invoke($manager, $path);
-		} catch (Throwable $e) {
-			$logger->error("ExtPack: Failed to parse resource pack from \"$url\" -> " . $e->getMessage());
-			@unlink($path);
-			return null;
-		}
+			try {
+				$refClass = new ReflectionClass(ResourcePackManager::class);
 
-		if ($contentKey !== "") {
-			$manager->setPackEncryptionKey($pack->getPackId(), $contentKey);
-			$logger->debug("ExtPack: Applied encryption key to pack \"{$pack->getPackName()}\" ({$pack->getPackId()})");
-		}
+				/** @var ResourcePack $pack */
+				$pack = $refClass->getMethod("loadPackFromPath")->invoke($manager, $path);
+			} catch (Throwable $e) {
+				$logger->error("ExtPack: Failed to parse resource pack from \"$url\" -> " . $e->getMessage());
+				@unlink($path);
+				$resolver->reject();
+				return;
+			}
 
-		$manager->setResourceStack(array_merge($manager->getResourceStack(), [$pack]));
-		$logger->info("ExtPack: Successfully loaded resource pack \"{$pack->getPackName()}\" (v{$pack->getPackVersion()}) from URL");
-		return $pack;
+			if ($contentKey !== "") {
+				$manager->setPackEncryptionKey($pack->getPackId(), $contentKey);
+				$logger->debug("ExtPack: Applied encryption key to pack \"{$pack->getPackName()}\" ({$pack->getPackId()})");
+			}
+
+			$manager->setResourceStack(array_merge($manager->getResourceStack(), [$pack]));
+			$logger->info("ExtPack: Successfully loaded resource pack \"{$pack->getPackName()}\" (v{$pack->getPackVersion()}) from URL");
+
+			$resolver->resolve($pack);
+		}));
+
+		return $resolver->getPromise();
 	}
 }

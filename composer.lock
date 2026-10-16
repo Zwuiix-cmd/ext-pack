@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e78f70b8bd2d12fde0f2b551dd3c875f",
+    "content-hash": "93b456d5f43a9ad0257079df6f9a1bd7",
     "packages": [],
     "packages-dev": [
         {
@@ -146,16 +146,16 @@
         },
         {
             "name": "axolotl-pm/bedrock-protocol",
-            "version": "62.0.0+bedrock-1.26.50",
+            "version": "63.0.1+bedrock-1.26.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/axolotl-pm/BedrockProtocol.git",
-                "reference": "0e13c077d1060ae9e293908eff81fbef600ead5c"
+                "reference": "7ff605d5b071d46c694d2b71bc8af4514156dbc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axolotl-pm/BedrockProtocol/zipball/0e13c077d1060ae9e293908eff81fbef600ead5c",
-                "reference": "0e13c077d1060ae9e293908eff81fbef600ead5c",
+                "url": "https://api.github.com/repos/axolotl-pm/BedrockProtocol/zipball/7ff605d5b071d46c694d2b71bc8af4514156dbc2",
+                "reference": "7ff605d5b071d46c694d2b71bc8af4514156dbc2",
                 "shasum": ""
             },
             "require": {
@@ -187,9 +187,58 @@
             "description": "An implementation of the Minecraft: Bedrock Edition protocol in PHP",
             "support": {
                 "issues": "https://github.com/axolotl-pm/BedrockProtocol/issues",
-                "source": "https://github.com/axolotl-pm/BedrockProtocol/tree/62.0.0+bedrock-1.26.50"
+                "source": "https://github.com/axolotl-pm/BedrockProtocol/tree/63.0.1+bedrock-1.26.50"
             },
-            "time": "2026-09-17T18:23:29+00:00"
+            "time": "2026-10-14T20:41:43+00:00"
+        },
+        {
+            "name": "axolotl-pm/nethernet",
+            "version": "0.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/axolotl-pm/NetherNet.git",
+                "reference": "6ecacdaed3b0605a6a523235e5536f9c09ea56fd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/axolotl-pm/NetherNet/zipball/6ecacdaed3b0605a6a523235e5536f9c09ea56fd",
+                "reference": "6ecacdaed3b0605a6a523235e5536f9c09ea56fd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-encoding": "~1.0.0",
+                "ext-hash": "*",
+                "ext-json": "*",
+                "ext-openssl": "*",
+                "ext-sockets": "*",
+                "ext-webrtc": "*",
+                "php": "^8.1",
+                "php-64bit": "*",
+                "php-ipv6": "*",
+                "pocketmine/log": "^0.4.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "2.1.46",
+                "phpstan/phpstan-phpunit": "^2.0.0",
+                "phpstan/phpstan-strict-rules": "^2.0.0",
+                "phpunit/phpunit": "^10.5.24"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "pocketmine\\nethernet\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-3.0-or-later"
+            ],
+            "description": "A NetherNet (WebRTC) transport implementation written in PHP",
+            "support": {
+                "issues": "https://github.com/axolotl-pm/NetherNet/issues",
+                "source": "https://github.com/axolotl-pm/NetherNet/tree/0.3.1"
+            },
+            "time": "2026-10-16T02:35:36+00:00"
         },
         {
             "name": "axolotl-pm/pocketmine-mp",
@@ -197,12 +246,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/axolotl-pm/PocketMine-MP",
-                "reference": "1fcc8ddc10f73e6525d95a5097c9911f4d718c2d"
+                "reference": "23b4dfca62a1ddc6d569d9e3d52284fb2c67575d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/axolotl-pm/PocketMine-MP/zipball/1fcc8ddc10f73e6525d95a5097c9911f4d718c2d",
-                "reference": "1fcc8ddc10f73e6525d95a5097c9911f4d718c2d",
+                "url": "https://api.github.com/repos/axolotl-pm/PocketMine-MP/zipball/23b4dfca62a1ddc6d569d9e3d52284fb2c67575d",
+                "reference": "23b4dfca62a1ddc6d569d9e3d52284fb2c67575d",
                 "shasum": ""
             },
             "require": {
@@ -210,7 +259,8 @@
                 "axolotl-pm/bedrock-block-upgrade-schema": "~5.4.1+bedrock-1.26.50",
                 "axolotl-pm/bedrock-data": "~6.9.0+bedrock-1.26.50",
                 "axolotl-pm/bedrock-item-upgrade-schema": "~1.19.0+bedrock-1.26.50",
-                "axolotl-pm/bedrock-protocol": "~62.0.0+bedrock-1.26.50",
+                "axolotl-pm/bedrock-protocol": "~63.0.1+bedrock-1.26.50",
+                "axolotl-pm/nethernet": "^0.3.1",
                 "axolotl-pm/xoroshiro128pp": "^0.1.0",
                 "composer-runtime-api": "^2.0",
                 "ext-chunkutils2": "^0.3.1",
@@ -306,7 +356,7 @@
             ],
             "description": "A server software for Minecraft: Bedrock Edition written in PHP",
             "homepage": "https://pmmp.io",
-            "time": "2026-10-11T23:36:57+00:00"
+            "time": "2026-10-16T06:13:49+00:00"
         },
         {
             "name": "axolotl-pm/xoroshiro128pp",
@@ -695,42 +745,42 @@
         },
         {
             "name": "ergebnis/agent-detector",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ergebnis/agent-detector.git",
-                "reference": "e211f17928c8b95a51e06040792d57f5462fb271"
+                "reference": "0cd815cec1207873c37624d33f0f2853523152f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ergebnis/agent-detector/zipball/e211f17928c8b95a51e06040792d57f5462fb271",
-                "reference": "e211f17928c8b95a51e06040792d57f5462fb271",
+                "url": "https://api.github.com/repos/ergebnis/agent-detector/zipball/0cd815cec1207873c37624d33f0f2853523152f3",
+                "reference": "0cd815cec1207873c37624d33f0f2853523152f3",
                 "shasum": ""
             },
             "require": {
                 "php": "~7.4.0 || ~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0"
             },
             "require-dev": {
-                "ergebnis/composer-normalize": "^2.51.0",
-                "ergebnis/license": "^2.7.0",
+                "ergebnis/composer-normalize": "^2.54.0",
+                "ergebnis/license": "^2.8.0",
                 "ergebnis/php-cs-fixer-config": "^6.60.2",
-                "ergebnis/phpstan-rules": "^2.13.1",
-                "ergebnis/phpunit-slow-test-detector": "^2.24.0",
-                "ergebnis/rector-rules": "^1.18.1",
+                "ergebnis/phpstan-rules": "^2.14.0",
+                "ergebnis/phpunit-slow-test-detector": "^2.26.0",
+                "ergebnis/rector-rules": "^1.18.5",
                 "fakerphp/faker": "^1.24.1",
                 "infection/infection": "^0.26.6",
                 "phpstan/extension-installer": "^1.4.3",
-                "phpstan/phpstan": "^2.1.54",
-                "phpstan/phpstan-deprecation-rules": "^2.0.4",
-                "phpstan/phpstan-phpunit": "^2.0.16",
-                "phpstan/phpstan-strict-rules": "^2.0.10",
+                "phpstan/phpstan": "^2.2.14",
+                "phpstan/phpstan-deprecation-rules": "^2.0.5",
+                "phpstan/phpstan-phpunit": "^2.1.1",
+                "phpstan/phpstan-strict-rules": "^2.1.0",
                 "phpunit/phpunit": "^9.6.34",
-                "rector/rector": "^2.4.2"
+                "rector/rector": "^2.7.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.2-dev"
+                    "dev-main": "1.3-dev"
                 },
                 "composer-normalize": {
                     "indent-size": 2,
@@ -760,7 +810,7 @@
                 "security": "https://github.com/ergebnis/agent-detector/blob/main/.github/SECURITY.md",
                 "source": "https://github.com/ergebnis/agent-detector"
             },
-            "time": "2026-05-07T08:19:07+00:00"
+            "time": "2026-10-15T11:13:32+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -2412,16 +2462,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v8.1.8",
+            "version": "v8.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "4b81146e3ee248ea969186f85499b54fbc78db08"
+                "reference": "630e74196a2635ec0f06c12bd3fb47cfedf85157"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/4b81146e3ee248ea969186f85499b54fbc78db08",
-                "reference": "4b81146e3ee248ea969186f85499b54fbc78db08",
+                "url": "https://api.github.com/repos/symfony/console/zipball/630e74196a2635ec0f06c12bd3fb47cfedf85157",
+                "reference": "630e74196a2635ec0f06c12bd3fb47cfedf85157",
                 "shasum": ""
             },
             "require": {
@@ -2488,7 +2538,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v8.1.8"
+                "source": "https://github.com/symfony/console/tree/v8.1.9"
             },
             "funding": [
                 {
@@ -2508,7 +2558,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-18T16:00:27+00:00"
+            "time": "2026-10-12T19:11:16+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -2749,16 +2799,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v6.4.45",
+            "version": "v6.4.48",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "6dabf41c21957a2060f101bd7bf7e322989866bd"
+                "reference": "e3ff48b19ac71ee79f89021122211710b892ae0b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/6dabf41c21957a2060f101bd7bf7e322989866bd",
-                "reference": "6dabf41c21957a2060f101bd7bf7e322989866bd",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/e3ff48b19ac71ee79f89021122211710b892ae0b",
+                "reference": "e3ff48b19ac71ee79f89021122211710b892ae0b",
                 "shasum": ""
             },
             "require": {
@@ -2795,7 +2845,7 @@
             "description": "Provides basic utilities for the filesystem",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/filesystem/tree/v6.4.45"
+                "source": "https://github.com/symfony/filesystem/tree/v6.4.48"
             },
             "funding": [
                 {
@@ -2815,7 +2865,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-08-23T07:59:31+00:00"
+            "time": "2026-10-06T17:30:58+00:00"
         },
         {
             "name": "symfony/finder",
@@ -3449,16 +3499,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v8.1.7",
+            "version": "v8.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "10823b09358e690df4ff943e24e8492bb1019fc3"
+                "reference": "59a682fd049b2d4d37c444f5ac21b7d01b8c7189"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/10823b09358e690df4ff943e24e8492bb1019fc3",
-                "reference": "10823b09358e690df4ff943e24e8492bb1019fc3",
+                "url": "https://api.github.com/repos/symfony/process/zipball/59a682fd049b2d4d37c444f5ac21b7d01b8c7189",
+                "reference": "59a682fd049b2d4d37c444f5ac21b7d01b8c7189",
                 "shasum": ""
             },
             "require": {
@@ -3490,7 +3540,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/process/tree/v8.1.7"
+                "source": "https://github.com/symfony/process/tree/v8.1.9"
             },
             "funding": [
                 {
@@ -3510,7 +3560,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-02T12:40:29+00:00"
+            "time": "2026-10-08T16:57:43+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -3667,16 +3717,16 @@
         },
         {
             "name": "symfony/string",
-            "version": "v8.1.7",
+            "version": "v8.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
-                "reference": "d950140b5f56f31901e5b7a0c04ffc3a3deb943c"
+                "reference": "07fb208558f941eab50ec49c89c2a6a93fb11f01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/d950140b5f56f31901e5b7a0c04ffc3a3deb943c",
-                "reference": "d950140b5f56f31901e5b7a0c04ffc3a3deb943c",
+                "url": "https://api.github.com/repos/symfony/string/zipball/07fb208558f941eab50ec49c89c2a6a93fb11f01",
+                "reference": "07fb208558f941eab50ec49c89c2a6a93fb11f01",
                 "shasum": ""
             },
             "require": {
@@ -3733,7 +3783,7 @@
                 "utf8"
             ],
             "support": {
-                "source": "https://github.com/symfony/string/tree/v8.1.7"
+                "source": "https://github.com/symfony/string/tree/v8.1.9"
             },
             "funding": [
                 {
@@ -3753,7 +3803,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-11T14:51:16+00:00"
+            "time": "2026-10-03T15:16:03+00:00"
         }
     ],
     "aliases": [],

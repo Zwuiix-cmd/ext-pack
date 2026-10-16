@@ -49,7 +49,7 @@ You may obtain a copy of the License at
     http://www.apache.org/licenses/LICENSE-2.0
 
 @author Zwuiix
-@link https://github.com/Zwuiix-cmd/ext-pack
+@link https://github.com/Zwuiix-cmd/remote-pack
 
 BODY,
             'location' => 'after_open'

@@ -1,4 +1,4 @@
 /.idea
 /vendor
 /.php-cs-fixer.cache
-/ext-pack.phar
+/remote-pack.phar

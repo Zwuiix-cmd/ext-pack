@@ -1,5 +1,5 @@
-name: ext-pack
-antigen: zwuiix\extpack
+name: remote-pack
+antigen: zwuiix\remotepack
 api: 5.0.0
 version: 1.0.1
 author: Zwuiix

@@ -9,7 +9,7 @@
  *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * @author Zwuiix
- * @link https://github.com/Zwuiix-cmd/ext-pack
+ * @link https://github.com/Zwuiix-cmd/remote-pack
  *
  */
 
@@ -91,8 +91,8 @@ function compile_phar(string $outputPath, array $files) : void
 function print_header() : void
 {
 	echo "\n";
-	echo format_text(" ext-pack COMPILER ", Style::Bold, Style::Cyan);
-	echo sprintf(" Target: %s\n\n", format_text("ext-pack.phar", Style::Bold));
+	echo format_text(" remote-pack COMPILER ", Style::Bold, Style::Cyan);
+	echo sprintf(" Target: %s\n\n", format_text("remote-pack.phar", Style::Bold));
 }
 
 function print_summary(string $outputPath, int $fileCount, float $executionTime) : void
@@ -121,7 +121,7 @@ verify_environment();
 print_header();
 
 $basePath = dirname(__DIR__);
-$outputPath = $basePath . '/ext-pack.phar';
+$outputPath = $basePath . '/remote-pack.phar';
 
 echo format_text("  » Gathering files and compiling...", Style::Dim) . "\r";
 
